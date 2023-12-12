@@ -1,5 +1,3 @@
----
-
 # BreastInsight: AI Image Classifier
 
 BreastInsight is an AI Image Classifier for Breast Ultrasound Images. It uses a Convolutional Neural Network (CNN) trained on the provided dataset to predict the state of ultrasound images as normal, benign, or malignant.
@@ -63,5 +61,3 @@ Feel free to contribute to the project. If you have suggestions, improvements, o
 ## License
 
 BreastInsight is licensed under the [MIT License](LICENSE).
-
----
