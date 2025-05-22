@@ -48,6 +48,53 @@ The dataset used for this project is sourced from [Kaggle](https://www.kaggle.co
 
    Open `BreastInsight.ipynb` in a Jupyter environment and run the cells to explore the code, train the model, and make predictions.
 
+## Web Application Usage
+
+To run the web application locally for image classification:
+
+### Prerequisites
+
+- Python 3.x
+- It's recommended to use a virtual environment.
+
+### Setup
+
+1.  **Clone the Repository (if you haven't already):**
+    ```bash
+    git clone https://github.com/your-username/BreastInsight.git
+    cd BreastInsight
+    ```
+
+2.  **Create and Activate a Virtual Environment:**
+    ```bash
+    python3 -m venv venv
+    ```
+    *   On macOS and Linux:
+        ```bash
+        source venv/bin/activate
+        ```
+    *   On Windows:
+        ```bash
+        venv\Scripts\activate
+        ```
+
+3.  **Install Dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    (Ensure `BreastInsight.h5` model file is present in the root directory before running the application, or update `MODEL_PATH` in `app.py` if it's located elsewhere.)
+
+### Running the Application
+
+1.  **Start the Flask Server:**
+    ```bash
+    python app.py
+    ```
+
+2.  Open your web browser and navigate to `http://127.0.0.1:5000/`.
+
+You should see a page where you can upload an image for classification. The result will be displayed on a new page.
+
 ## Model Usage
 
 - Load the `BreastInsight.h5` model file into your application or script.

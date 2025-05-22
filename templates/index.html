@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Breast Ultrasound Image Classifier</title>
+  </head>
+  <body>
+    <h1>Breast Ultrasound Image Classifier</h1>
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+      <input type="file" name="image" required>
+      <button type="submit">Classify Image</button>
+    </form>
+  </body>
+</html>
