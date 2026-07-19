@@ -1,63 +1,104 @@
-# BreastInsight: AI Image Classifier
+# BreastInsight — CNN for Breast Ultrasound Image Classification
 
-BreastInsight is an AI Image Classifier for Breast Ultrasound Images. It uses a Convolutional Neural Network (CNN) trained on the provided dataset to predict the state of ultrasound images as normal, benign, or malignant.
+A Convolutional Neural Network that classifies breast ultrasound images into three categories: **normal, benign, and malignant**. Trained on the BUSI dataset with **87% test accuracy**.
 
-## Project Files
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=white)](https://keras.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-```
-BreastInsight/
-│
-├── BreastInsight.h5
-├── BreastInsight.ipynb
-├── Dataset.txt
-├── Dataset_BUSI_with_GT/
-│   ├── [Dataset files and folders]
-│
-└── model.fix
-```
+## Overview
 
-- **`BreastInsight.h5`**: Trained CNN model for breast ultrasound image classification.
+**Problem.** Manual review of breast ultrasound images is time-consuming and requires specialist expertise. A well-tuned image classifier can act as a screening aid, flagging suspicious images for radiologist review.
 
-- **`BreastInsight.ipynb`**: Jupyter Notebook containing the code for training the model and performing predictions.
+**Approach.**
 
-- **`Dataset.txt`**: Information or description about the dataset.
+1. Loaded the BUSI (Breast Ultrasound Images) dataset — three classes: normal, benign, malignant.
+2. Applied image preprocessing — resizing, normalization, and data augmentation to reduce overfitting on the small dataset.
+3. Trained a 3-layer Convolutional Neural Network with dropout and evaluated on a held-out test set.
+4. Evaluated with accuracy, confusion matrix, and per-class recall (recall matters most for malignant class).
 
-- **`Dataset_BUSI_with_GT/`**: Directory containing the dataset files. (Please upload the dataset files to this directory)
+**Result.** **87% test accuracy** on 3-class classification.
 
-- **`model.fix`**: Model file (you may provide more details on what this file contains).
+## Tech Stack
+
+- **Python**, **Jupyter Notebook**
+- **TensorFlow / Keras** — CNN model, ImageDataGenerator, callbacks
+- **NumPy**, **Matplotlib** — array handling and evaluation plots
+- **PIL / OpenCV** — image I/O and preprocessing
 
 ## Dataset
 
-The dataset used for this project is sourced from [Kaggle](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset). Please make sure to follow the dataset's license and terms of use.
+Source: [Breast Ultrasound Images Dataset (BUSI) — Kaggle](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset)
+
+- 780 images across 3 classes: normal, benign, malignant
+- Grayscale ultrasound scans with ground-truth masks
+
+## Model Architecture
+
+3-layer CNN — Conv2D → MaxPool blocks with ReLU, dropout regularization, and a dense softmax output for 3-way classification. Trained with Adam optimizer and categorical cross-entropy loss.
+
+## Project Structure
+
+```
+BreastInsight/
+├── BreastInsight.ipynb    # End-to-end notebook: preprocessing, training, evaluation
+├── BreastInsight.h5       # Trained Keras model weights
+├── model.fix/             # Alternate model checkpoints
+├── LICENSE
+└── README.md
+```
 
 ## Getting Started
 
-1. **Clone the Repository:**
+**1. Clone the repo**
 
-   ```bash
-   git clone https://github.com/your-username/BreastInsight.git
-   ```
+```bash
+git clone https://github.com/aljuhaeda/BreastInsight.git
+cd BreastInsight
+```
 
-2. **Navigate to the Project Directory:**
+**2. Install dependencies**
 
-   ```bash
-   cd BreastInsight
-   ```
+```bash
+pip install tensorflow keras numpy matplotlib pillow jupyter
+```
 
-3. **Run the Jupyter Notebook:**
+**3. Download the dataset**
 
-   Open `BreastInsight.ipynb` in a Jupyter environment and run the cells to explore the code, train the model, and make predictions.
+Download the [BUSI dataset](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset) and place it in `Dataset_BUSI_with_GT/` at the project root.
 
-## Model Usage
+**4. Open the notebook**
 
-- Load the `BreastInsight.h5` model file into your application or script.
+```bash
+jupyter notebook BreastInsight.ipynb
+```
 
-- Use the model to predict the state of breast ultrasound images.
+Run all cells to reproduce preprocessing, training, and evaluation.
 
-## Contributing
+## Inference on a New Image
 
-Feel free to contribute to the project. If you have suggestions, improvements, or found a bug, please open an issue or create a pull request.
+```python
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+import numpy as np
+
+model = load_model("BreastInsight.h5")
+img = image.load_img("your_image.png", target_size=(224, 224))
+x = np.expand_dims(image.img_to_array(img) / 255.0, axis=0)
+pred = model.predict(x)
+class_names = ["benign", "malignant", "normal"]
+print(class_names[np.argmax(pred)])
+```
+
+## Limitations
+
+- **Small dataset (780 images)** — augmentation helps but generalization to different imaging equipment or populations is not guaranteed.
+- **Not for clinical use** — this is a research/educational project. Any real-world screening decision requires validation on much larger, multi-site datasets and regulatory approval.
 
 ## License
 
-BreastInsight is licensed under the [MIT License](LICENSE).
+MIT. See [LICENSE](LICENSE).
+
+## Author
+
+**Zul Iflah Al Juhaeda** — [LinkedIn](https://linkedin.com/in/aljuhaeda) · [GitHub](https://github.com/aljuhaeda)
