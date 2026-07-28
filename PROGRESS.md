@@ -34,10 +34,6 @@ model artifact.
   133 normal) — normal-class recall is only 0.14 as a direct result.
 - Not validated on multi-site data or different imaging equipment.
 - No live demo app exists for this repo (unlike the other ML projects).
-- `README.md` describes `model.fix/` only as "alternate model
-  checkpoints", with no warning that it's the pre-fix, mask-contaminated
-  checkpoint (never retrained after the data-integrity fix above) —
-  fixed 2026-07-28, see Verification log.
 
 ## Verification log
 - 2026-07-23: git working tree clean, no pending diff. `/security-review`
