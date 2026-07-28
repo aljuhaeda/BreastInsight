@@ -34,6 +34,10 @@ model artifact.
   133 normal) — normal-class recall is only 0.14 as a direct result.
 - Not validated on multi-site data or different imaging equipment.
 - No live demo app exists for this repo (unlike the other ML projects).
+- `README.md` describes `model.fix/` only as "alternate model
+  checkpoints", with no warning that it's the pre-fix, mask-contaminated
+  checkpoint (never retrained after the data-integrity fix above) —
+  fixed 2026-07-28, see Verification log.
 
 ## Verification log
 - 2026-07-23: git working tree clean, no pending diff. `/security-review`
@@ -50,3 +54,16 @@ model artifact.
 - If deeper verification is wanted: install TensorFlow and run one real
   inference against a known-label BUSI image to confirm output matches
   the documented class order (`benign, malignant, normal`).
+
+## Verification log (continued)
+- 2026-07-28: fresh audit found `git log -- model.fix` shows that
+  directory was added in the very first commit and never touched by the
+  later data-integrity fix commit — it's the broken pre-fix model, not
+  an alternate checkpoint as README implied. README now warns against
+  using it for inference. Also fixed a filename mismatch in
+  `BreastInsight.ipynb`: the model-save cell wrote `uas.h5` (untracked,
+  never produced elsewhere in the notebook) while the load-model demo
+  cell a few cells later loaded `BreastInsight.h5` — running the
+  notebook top-to-bottom as the README instructs never actually
+  exercised the just-trained model. Save cell now writes
+  `BreastInsight.h5` to match.

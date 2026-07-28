@@ -51,7 +51,7 @@ Source: [Breast Ultrasound Images Dataset (BUSI) — Kaggle](https://www.kaggle.
 BreastInsight/
 ├── BreastInsight.ipynb    # End-to-end notebook: preprocessing, training, evaluation
 ├── BreastInsight.h5       # Trained Keras model weights
-├── model.fix/             # Alternate model checkpoints
+├── model.fix/             # Pre-fix checkpoint (see Known Issues) — do not use for inference
 ├── LICENSE
 └── README.md
 ```
@@ -104,6 +104,7 @@ print(class_names[np.argmax(pred)])
 - **Small, imbalanced dataset (780 images: 437 benign / 210 malignant / 133 normal)** — augmentation helps but generalization to different imaging equipment or populations is not guaranteed. The class imbalance shows up directly in the results: normal-class recall is only 0.14, meaning the model rarely identifies a normal scan correctly.
 - **Malignant recall (0.47) is not screening-grade.** The model misses over half of malignant cases in validation — nowhere near sufficient for any real triage use.
 - **Not for clinical use** — this is a research/educational project. Any real-world screening decision requires validation on much larger, multi-site datasets and regulatory approval.
+- **`model.fix/` is the pre-fix checkpoint, not an alternate/backup model.** Git history shows it was committed before the mask-contamination and label-shuffle fix (see Data Integrity Fix above) and was never retrained afterward — it holds weights from the original run trained on the mixed masks+images set. Use `BreastInsight.h5` for inference; `model.fix/` is kept only for reference and will silently give invalid predictions if loaded.
 
 ## License
 
