@@ -45,11 +45,27 @@ model artifact.
   environment available locally to run it. Stated honestly rather than
   assumed working; would need `pip install tensorflow` and an actual
   `model.predict()` call to fully confirm.
+- 2026-07-29: TensorFlow environment built (`py -3.11` venv,
+  `pip install tensorflow numpy pillow scikit-learn`). `BreastInsight.h5`
+  loads cleanly; architecture matches the README exactly (3-layer CNN,
+  `Rescaling(1./255)` first layer, `224×224×3` input, 3-class output,
+  6.4M params).
+- 2026-07-29 (full re-verification): downloaded the real BUSI dataset via
+  the Kaggle API, rebuilt `clean_dataset/` using the notebook's exact
+  mask-filtering logic (780 files: 437 benign / 210 malignant / 133
+  normal — matches README exactly), reproduced the notebook's exact
+  `image_dataset_from_directory` validation split (`validation_split=0.2,
+  seed=123`, 156 validation files), and ran the real trained
+  `BreastInsight.h5` through `classification_report` and
+  `model.evaluate()`. **Result matches the README exactly**: 69.2%
+  accuracy, recall benign 0.91 / malignant 0.47 / normal 0.14. The
+  headline accuracy claim is now genuinely, independently reproduced —
+  not just internally consistent with the notebook's saved output.
+  `Dataset_BUSI_with_GT/` and `clean_dataset/` are gitignored (not
+  committed — too large, and reproducible from Kaggle on demand).
 
 ## Next up
-- If deeper verification is wanted: install TensorFlow and run one real
-  inference against a known-label BUSI image to confirm output matches
-  the documented class order (`benign, malignant, normal`).
+- Nothing outstanding — the one open verification item is now closed.
 
 ## Verification log (continued)
 - 2026-07-28: fresh audit found `git log -- model.fix` shows that
