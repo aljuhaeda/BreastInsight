@@ -6,6 +6,8 @@ A Convolutional Neural Network that classifies breast ultrasound images into thr
 [![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=white)](https://keras.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![Confusion matrix](docs/confusion-matrix.png)
+
 ## Overview
 
 **Problem.** Manual review of breast ultrasound images is time-consuming and requires specialist expertise. A well-tuned image classifier can act as a screening aid, flagging suspicious images for radiologist review.
