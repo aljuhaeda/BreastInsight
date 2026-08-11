@@ -79,3 +79,5 @@ model artifact.
   notebook top-to-bottom as the README instructs never actually
   exercised the just-trained model. Save cell now writes
   `BreastInsight.h5` to match.
+- 2026-08-11: reviewed commits since last check (README confusion-matrix
+  screenshot only) — no model/notebook code changed, status unaffected.
