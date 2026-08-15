@@ -81,3 +81,16 @@ model artifact.
   `BreastInsight.h5` to match.
 - 2026-08-11: reviewed commits since last check (README confusion-matrix
   screenshot only) — no model/notebook code changed, status unaffected.
+- 2026-08-15: closed the "verified env unrecorded/unbuildable" gap
+  (C:\dev\PROGRESS.md item 8). The 2026-07-29 venv (`py -3.11`,
+  TensorFlow 2.21) was still present on disk and still loads/evaluates
+  correctly — did not need rebuilding. Re-ran the full reproduction
+  (`model.evaluate()` + `classification_report` on the 156-file
+  validation split) against the still-present `clean_dataset/`: **69.2%
+  accuracy, recall benign 0.91 / malignant 0.47 / normal 0.14 — matches
+  README exactly, confirmed reproducible a second time, not just
+  recorded once.** Froze the venv's `pip freeze` output to
+  `requirements.txt` (59 pinned packages) and committed it — the
+  verified environment is now reconstructible from the repo instead of
+  living only in one person's local disk state. README's install step
+  updated to `pip install -r requirements.txt`.

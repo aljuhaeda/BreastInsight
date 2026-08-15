@@ -70,8 +70,10 @@ cd BreastInsight
 **2. Install dependencies**
 
 ```bash
-pip install tensorflow keras numpy matplotlib pillow jupyter
+pip install -r requirements.txt
 ```
+
+`requirements.txt` is a pinned freeze of the exact environment (Python 3.11) that the 69.2% accuracy claim was independently reproduced in — see PROGRESS.md's verification log.
 
 **3. Download the dataset**
 
