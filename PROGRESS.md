@@ -1,8 +1,7 @@
 # BreastInsight — Progress
 
 ## Status
-Stable, research/educational. No live demo — local notebook + trained
-model artifact.
+Deployed, verified. Live demo: [breastinsight-aljuhaeda.streamlit.app](https://breastinsight-aljuhaeda.streamlit.app)
 
 ## Done
 - 3-layer CNN classifying breast ultrasound images (BUSI dataset) into
@@ -33,7 +32,6 @@ model artifact.
 - Small, imbalanced dataset (780 images: 437 benign / 210 malignant /
   133 normal) — normal-class recall is only 0.14 as a direct result.
 - Not validated on multi-site data or different imaging equipment.
-- No live demo app exists for this repo (unlike the other ML projects).
 
 ## Verification log
 - 2026-07-23: git working tree clean, no pending diff. `/security-review`
@@ -94,3 +92,13 @@ model artifact.
   verified environment is now reconstructible from the repo instead of
   living only in one person's local disk state. README's install step
   updated to `pip install -r requirements.txt`.
+- 2026-08-15 (deploy): added `app.py` (Streamlit, same pattern as
+  BankruptWatch/IndoNewsClassifier/KlasifikasiSentimenTwitter — upload
+  image, get prediction, not-for-clinical-use warning + accuracy table
+  on screen) and deployed to Streamlit Community Cloud. First deploy
+  attempt failed — Streamlit Cloud defaulted to Python 3.14, and
+  TensorFlow 2.21 has no 3.14 wheel, the exact mismatch this item's
+  original finding described. Fixed by pinning the app's Python version
+  to 3.11 in Streamlit Cloud's app settings (not a requirements.txt
+  change) and rebooting. Confirmed live: app boots clean, no install
+  errors, UI renders the warning banner and performance table.

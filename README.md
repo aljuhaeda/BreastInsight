@@ -2,6 +2,8 @@
 
 A Convolutional Neural Network that classifies breast ultrasound images into three categories: **normal, benign, and malignant**. Trained on the BUSI dataset, reaching **69% validation accuracy** (macro-avg recall 51%) after fixing two bugs in the original pipeline — see [Data Integrity Fix](#data-integrity-fix-masks-were-being-trained-on) below.
 
+**Live demo:** [breastinsight-aljuhaeda.streamlit.app](https://breastinsight-aljuhaeda.streamlit.app)
+
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![Keras](https://img.shields.io/badge/Keras-D00000?logo=keras&logoColor=white)](https://keras.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
