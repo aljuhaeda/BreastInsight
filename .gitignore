@@ -1,3 +1,5 @@
 .venv/
 Dataset_BUSI_with_GT/
 clean_dataset/
+model.fix/
+*.h5
