@@ -102,3 +102,11 @@ Deployed, verified. Live demo: [breastinsight-aljuhaeda.streamlit.app](https://b
   to 3.11 in Streamlit Cloud's app settings (not a requirements.txt
   change) and rebooting. Confirmed live: app boots clean, no install
   errors, UI renders the warning banner and performance table.
+- 2026-09-20: `model.fix/` (unused broken pre-fix checkpoint, see
+  2026-07-28 entry above) untracked and gitignored — confirmed unused by
+  `app.py` or any notebook/script first. `BreastInsight.h5` untracking
+  was attempted in the same pass then reverted same day: `app.py` loads
+  it directly from the repo, and Streamlit Community Cloud rebuilds from
+  git on deploy, so untracking it would break the live deploy on next
+  sync. Old `model.fix/` blobs (~150MB) still in `.git` history until a
+  separate rewrite (filter-repo/BFG + force-push) — not done.
