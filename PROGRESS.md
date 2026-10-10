@@ -63,7 +63,8 @@ Deployed, verified. Live demo: [breastinsight-aljuhaeda.streamlit.app](https://b
   committed — too large, and reproducible from Kaggle on demand).
 
 ## Next up
-- Nothing outstanding — the one open verification item is now closed.
+- 2026-10-10: `urllib3` pin 2.7.0 → 2.8.0 (PYSEC-2026-4175/6/7, workspace audit F5). Resolves cleanly against `requests`/`kaggle` in a pip dry-run; **not** yet pushed, and the Streamlit Cloud rebuild after the push is the real test, so check the live app boots.
+- Otherwise nothing outstanding.
 
 ## Verification log (continued)
 - 2026-07-28: fresh audit found `git log -- model.fix` shows that

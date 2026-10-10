@@ -55,6 +55,6 @@ threadpoolctl==3.6.0
 tqdm==4.70.0
 traitlets==5.15.1
 typing_extensions==4.16.0
-urllib3==2.7.0
+urllib3==2.8.0
 webencodings==0.5.1
 wrapt==2.3.0
