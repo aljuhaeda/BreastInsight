@@ -63,7 +63,7 @@ Deployed, verified. Live demo: [breastinsight-aljuhaeda.streamlit.app](https://b
   committed — too large, and reproducible from Kaggle on demand).
 
 ## Next up
-- 2026-10-10: `urllib3` pin 2.7.0 → 2.8.0 (PYSEC-2026-4175/6/7, workspace audit F5). Resolves cleanly against `requests`/`kaggle` in a pip dry-run; **not** yet pushed, and the Streamlit Cloud rebuild after the push is the real test, so check the live app boots.
+- 2026-10-10: `urllib3` pin 2.7.0 → 2.8.0 (PYSEC-2026-4175/6/7, workspace audit F5). Resolves cleanly against `requests`/`kaggle` in a pip dry-run; committed as `e830da9`, and `main` == `origin/main` as of 2026-11-03 (so it is on GitHub). The Streamlit Cloud rebuild is the real test and the live app has not been re-checked: confirm it boots.
 - Otherwise nothing outstanding.
 
 ## Verification log (continued)
