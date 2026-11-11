@@ -54,7 +54,7 @@ st.divider()
 st.subheader("Model Performance")
 st.markdown(
     """
-Evaluated on a held-out validation set (156 images, 20% split):
+Evaluated on the validation split (156 images, 20%), which early stopping also monitored, so not an untouched test set:
 
 | Metric | Value |
 |---|---|

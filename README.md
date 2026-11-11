@@ -18,7 +18,7 @@ A Convolutional Neural Network that classifies breast ultrasound images into thr
 
 1. Loaded the BUSI (Breast Ultrasound Images) dataset — three classes: normal, benign, malignant — **excluding the segmentation masks** (see below).
 2. Applied image preprocessing — resizing, normalization, and data augmentation to reduce overfitting on the small dataset.
-3. Trained a 3-layer Convolutional Neural Network with dropout and evaluated on a held-out validation set.
+3. Trained a 3-layer Convolutional Neural Network with dropout and evaluated on a 20% validation split (the same split early stopping monitors, so it is not an untouched test set).
 4. Evaluated with accuracy, confusion matrix, and per-class recall (recall matters most for the malignant class).
 
 **Result.** **69% validation accuracy** on 3-class classification. Per-class recall: benign 0.91, malignant 0.47, normal 0.14 — the model is reasonably reliable on benign cases but misses roughly half of malignant cases and struggles badly on normal scans (see [Limitations](#limitations)).
